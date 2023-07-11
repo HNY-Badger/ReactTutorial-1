@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as ReactDOMClient from 'react-dom/client';
 
-const helpText="HElp meee"
+const helpText="H text"
 
-const inputClick = ()=>console.log("dfs")
-const mouseOver =()=>console.log("gfds")
-const element = (<div className="ff">
-                    <h1>{helpText}</h1> <input placeholder={helpText} onClick={inputClick} onMouseEnter={mouseOver}/>
-                <p>{helpText==="HElp meee"?'YEs':'No'}</p>
+const onInputClick = ()=>console.log("click")
+const onMouseOver =()=>console.log("over")
+const elements = (<div className="ff">
+  <h1>{helpText}</h1>
+  <input placeholder={helpText} onClick={onInputClick} onMouseEnter={onMouseOver}/>
+  <p>{helpText ==="H text"?'Yes':'No'}</p>
+</div>)
 
-                </div>
-                    )
-const app = document.getElementById("app")
-ReactDOM.render(element,app)
+
+const app = ReactDOMClient.createRoot(document.getElementById("root"))
+
+app.render(elements)
