@@ -22,6 +22,12 @@ class App extends React.Component {
 
     onMouseOver =()=>console.log("over")
 
+    componentDidUpdate(prevProp) {
+        if(this.state.helpText != "Help") {
+            console.log("Smthng")
+        }
+    }
+
     render() {
         return (<div className="name">
             <Header title="Header"/>
