@@ -4,21 +4,38 @@ import Image from './components/image';
 import apple from "./img/apple.jpg"
 
 class App extends React.Component {
-  onInputClick = ()=>console.log("click")
-  onMouseOver =()=>console.log("over")
+    constructor(props) {
+        super(props)
+        this.state = {
+            helpText: "Help text",
+            userData: ""
+        }
 
-  helpText="H text"
+        // this.onInputClick = this.onInputClick.bind(this) Not necessary, working without binding
+    }
+    
 
-  render() {
-    return (<div className="name">
-      <Header title="Header"/>
-      <h1>{this.helpText}</h1>
-      <input placeholder={this.helpText} onClick={this.onInputClick} onMouseEnter={this.onMouseOver}/>
-      <p>{this.helpText ==="H text"?'Yes':'No'}</p>
-      <Image image={apple}/>
-      <img src={apple}/>
-  </div>)
-  }
+    onInputClick = ()=> {
+        this.setState({helpText: "Changed"})
+        console.log("Clicked")
+    }
+
+    onMouseOver =()=>console.log("over")
+
+    render() {
+        return (<div className="name">
+            <Header title="Header"/>
+            <h1>{this.state.helpText}</h1>
+            <h2>{this.state.userData}</h2>
+            <input placeholder={this.state.helpText}
+                onChange={e => this.setState({userData: e.target.value})}
+                onClick={this.onInputClick} 
+                onMouseEnter={this.onMouseOver}/>
+            <p>{this.state.helpText ==="H text"?'Yes':'No'}</p>
+            <Image image={apple}/>
+            <img src={apple}/>
+        </div>)
+    }
 }
 
 export default App
